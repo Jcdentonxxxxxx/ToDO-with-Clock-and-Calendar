@@ -1,0 +1,52 @@
+.calendar-main {
+    border-top: 1px solid rgb(99, 95, 95);
+    border-bottom: 1px solid rgb(99, 95, 95);
+    padding: 10px;
+
+    &__header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    &__date {
+        color: rgb(212, 208, 208);
+        width: 50%;
+    }
+
+    &__arrows {
+        width: 50%;
+        position: relative;
+        height: 15px;
+    }
+
+    &__arrow {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-left: 2px solid rgb(212, 208, 208);
+        border-bottom: 2px solid rgb(212, 208, 208);
+        cursor: pointer;
+
+        &:hover {
+            border-color: #fff;
+        }
+
+        &--top {
+            right: 30%;
+            transform: rotate(135deg) translateY(-50%);
+        }
+
+        &--bottom {
+            right: 10%;
+            transform: rotate(-45deg) translateY(-50%);
+        }
+    }
+}
+
+
+
+
+
+

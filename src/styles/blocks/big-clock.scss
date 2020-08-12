@@ -1,0 +1,32 @@
+.big-clock {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding: 10px;
+
+    &__time {
+        font-size: 32px;
+        font-weight: 100;
+        display: flex;
+        align-items: center;
+    }
+
+    &__dubbleDot {
+        padding-bottom: 5px;
+    }
+
+    &__date {
+        color: rgb(157, 211, 255);
+        cursor: pointer;
+
+        &:hover {
+            color: rgb(153, 149, 149);
+        }
+    }
+}
+
+
+
+

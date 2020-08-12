@@ -1,0 +1,41 @@
+.calendar {
+    overflow: hidden;
+    min-height: 264px;
+
+    td {
+        cursor: pointer;
+
+        &:hover {
+            border-color: rgb(212, 208, 208);
+        }
+
+        &.active {
+            border-color: rgb(0, 153, 255);
+
+            &:hover {
+                border-color: rgb(3, 128, 211);
+            }
+        }
+
+        &.duble-active {
+            background-color: rgb(3, 128, 211);
+            border-color: rgb(3, 128, 211);
+
+            &:hover {
+                background-color: rgb(3, 128, 211);
+                border-color: rgb(0, 153, 255);
+            }   
+        }
+    }
+}
+
+.calendar td.active.duble-active {
+    border-color: rgb(0, 153, 255);
+    box-shadow: inset 0px 0px 0 2px rgba(0, 0, 0, 0.9);
+    background-color: rgb(3, 128, 211);
+
+}
+
+.calendar td.active.duble-active:hover {
+    border-color: rgb(90, 167, 240)
+}

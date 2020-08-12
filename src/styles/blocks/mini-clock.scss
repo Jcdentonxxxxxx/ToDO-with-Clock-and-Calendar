@@ -1,0 +1,52 @@
+.mini-clock {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 50px;
+    background-color: black;
+    margin: 0 auto;
+    cursor: pointer;
+    padding: 5px;
+    overflow: hidden;
+
+    &__time,
+    &__date {
+         display: flex;
+         justify-content: center;
+         padding: 1px;
+    }
+
+    &__wave {
+        position: absolute;
+        background: #fff;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        border-radius: 50%;
+        -webkit-animation: animate 1s linear infinite;
+        animation: animate 1s linear infinite;
+    }
+}
+
+@keyframes animate {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 0.5;
+    }
+
+    100% {
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+    }
+
+}
+
+
