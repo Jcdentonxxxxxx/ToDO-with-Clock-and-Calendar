@@ -1,4 +1,4 @@
-import getMonthStr from './get-month';
+import getMonthStr from './getMonth';
 
 let infoTime = {};
 

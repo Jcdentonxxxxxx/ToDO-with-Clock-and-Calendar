@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"
+        integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg=="
+        crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <title>Webpack</title>
     
@@ -16,7 +19,7 @@
             <span data-clock="day"></span>.<span data-clock="month"></span>.<span data-clock="year"></span>
         </div>
     </div>
-    <div class="todo">
+    <div class="todo-date">
         <div class="big-clock">
             <div class="big-clock__time">
                 <span data-clock="hours"></span>
@@ -58,6 +61,35 @@
         
             </div>
         </div>
+
+        <div class="todo">
+            <form class="todo__form todo__form--select">
+                <div>
+                    <h1 class="todo__header">Пока не по датам</h1>
+                </div>
+                <div class="todo__select">
+                    <select name="todos" class="todo__filter">
+                        <option value="all">Все</option>
+                        <option value="completed">Выполнено</option>
+                        <option value="uncompleted">Не выполнено</option>
+                    </select>
+                </div>
+            </form>
+            
+            <form class="todo__form todo__form--input">
+                <input type="text" class="todo__input">
+                <button class="todo__button" type="submit">
+                    <i class="fas fa-plus-square"></i>
+                </button>
+            </form>
+
+            <div class="todo__container">
+                <ul class="todo__list">
+            
+                </ul>
+            </div>
+        </div>
+
     </div>
    
 </body>

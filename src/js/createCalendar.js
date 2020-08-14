@@ -1,4 +1,4 @@
-import fixCurrentDate from './fix-current-date';
+import fixCurrentDate from './fixCurrentDate';
 
 
 let calendar = document.querySelector('.calendar');
@@ -104,22 +104,14 @@ function createTbody(elem, table) {
 createCalendar(calendar, new Date().getFullYear(), new Date().getMonth() + 1);
 
 
-/*Listeners*/
-/*==== Calendar TD ====*/
-calendar.addEventListener('click', function (e) {
-    let calendarListTd = calendar.querySelectorAll('td');
-    for (let i = 0; i < calendarListTd.length; i++) {
-
-        if (calendarListTd[i].classList.contains('active')) {
-            calendarListTd[i].classList.remove('active');
-        }
-    }
-    e.target.classList.add('active');
-});
-
 /*==== Calendar Arrows====*/
+
+
 let calendarMainArrows = document.querySelector('.calendar-main__arrows');
-calendarMainArrows.addEventListener('click', function (e) {
+calendarMainArrows.addEventListener('click', changeCalendar);
+
+
+function changeCalendar(e) {
 
     if (e.target.classList.contains('calendar-main__arrow--top')) {
 
@@ -149,6 +141,4 @@ calendarMainArrows.addEventListener('click', function (e) {
         }
         createCalendar(calendar, currentYear, currentMonth + 1);
     }
-});
-
-
+}

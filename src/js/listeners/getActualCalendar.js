@@ -1,4 +1,4 @@
-import createCalendar from '../create-calendar.js';
+import createCalendar from '../createCalendar.js';
 
 /*==== BigClock ====*/
 let bigClockDate = document.querySelector('.big-clock__date');
