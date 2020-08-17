@@ -64,13 +64,34 @@ function deleteCheck(event) {
     if (item.closest('.todo__complete')) {
         const todo = item.closest('.todo__block');
         todo.classList.toggle('completed');
+        let isComplete;
+
+        if (todo.dataset.complete == 'true') {
+            todo.setAttribute('data-complete', false);
+            todo.setAttribute('data-find', 'findMe');
+            isComplete = false;
+        } else {
+            todo.setAttribute('data-complete', true);
+            isComplete = true;
+            todo.setAttribute('data-find', 'findMe');
+            console.dir(todo);
+        }
+
+        let collectionTodo = todoList.querySelectorAll('.todo__block');
+        let index;
+        for (let i = 0; i < collectionTodo.length; i++) {
+            if (collectionTodo[i].dataset.find) index = i;
+        }
+
+        changeLocalTodos(todo, index, isComplete);
+        todo.removeAttribute('data-find');
     };
 }
 
 function filterTodo(event) {
     const todos = todoList.children;
     if (!todos.length) return;
-    console.log(todos);
+    
 
     for (const todo of todos) {
         switch (event.target.value) {
@@ -103,7 +124,10 @@ function saveLocalTodos(todo) {
     } else {
         todos = JSON.parse(localStorage.getItem('todos'));
     }
-    todos.push(todo);
+    todos.push({
+        todoText: todo,
+        completed: false
+    });
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
@@ -116,11 +140,17 @@ function getTodos() {
     }
 
     todos.forEach(function (todo) {
+        console.log(todo);
         const todoDiv = document.createElement('div');
         todoDiv.classList.add('todo__block');
 
+        if (todo.completed === true) {
+            todoDiv.classList.add('completed');
+            todoDiv.setAttribute('data-complete', true);
+        }
+
         const newTodo = document.createElement('li');
-        newTodo.innerText = todo;
+        newTodo.innerText = todo.todoText;
         newTodo.classList.add('todo__item');
         todoDiv.append(newTodo);
 
@@ -148,5 +178,17 @@ function removeLocalTodos(todo, index) {
     }
 
     todos.splice(index, 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function changeLocalTodos(todo, index, isComplete) {
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+
+    todos[index].completed = isComplete;
     localStorage.setItem('todos', JSON.stringify(todos));
 }
