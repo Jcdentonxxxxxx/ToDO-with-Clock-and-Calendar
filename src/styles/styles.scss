@@ -9,6 +9,7 @@ body {
     color: #fff;
     font-family: 'RobotoCondensed';
     min-height: 100vh;
+    overflow: hidden;
 }
 
 h1,
@@ -47,3 +48,4 @@ ul {
 @import "./blocks/table.scss";
 @import "./blocks/calendar.scss";
 @import "./blocks/todo.scss";
+@import "./blocks/modal.scss";

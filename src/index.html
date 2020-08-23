@@ -65,7 +65,10 @@
         <div class="todo">
             <form class="todo__form todo__form--select">
                 <div>
-                    <h1 class="todo__header">Пока не по датам</h1>
+                    <h1 class="todo__header">
+                        <span></span>
+                        <span></span>
+                    </h1>
                 </div>
                 <div class="todo__select">
                     <select name="todos" class="todo__filter">
@@ -89,7 +92,15 @@
                 </ul>
             </div>
         </div>
+    </div>
 
+    <div class="modal">
+        <div class="modal__content">
+            <button class="modal__close" type="button" data-close>
+                <i class="fas fa-times-circle"></i>
+            </button>
+            <h1>Все задачи</h1>
+        </div>
     </div>
    
 </body>

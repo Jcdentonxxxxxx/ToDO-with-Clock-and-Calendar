@@ -7,4 +7,11 @@
     width: 360px;
     border: 1px solid rgb(99, 95, 95);
     user-select: none;
+    transform: translateX(100%);
+    transition: all 0.2s linear;
+   
+
+    &.show {
+        transform: translateX(0%);
+    }
 }

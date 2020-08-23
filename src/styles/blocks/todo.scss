@@ -1,15 +1,19 @@
 .todo {
     padding: 10px;
+    overflow: hidden;
 
     &__header {
         font-family: 'RobotoCondensed';
         font-weight: 400;
         font-size: 18px;
+        color: #9dd3ff;
+        cursor: pointer;
     }
 
     &__form {
         display: flex;
         align-items: center;
+        height: 25px;
 
         input,
         button {

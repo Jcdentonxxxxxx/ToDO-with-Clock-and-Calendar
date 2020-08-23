@@ -32,6 +32,7 @@ export default function createCalendar(elem , year, month) {
         for (let i = count; i > 0; i--) {
             emptyFirstTd[i - 1].innerHTML = date;
             emptyFirstTd[i - 1].style.color = 'grey';
+            emptyFirstTd[i - 1].setAttribute('anothermonth', 'previous');
             date--;
         }
     }
@@ -66,6 +67,7 @@ export default function createCalendar(elem , year, month) {
         for (let i = 1; i <= restDays; i++) {
             lastCols[dayOfWeek - 1].innerHTML = i;
             lastCols[dayOfWeek - 1].style.color = 'grey';
+            lastCols[dayOfWeek - 1].setAttribute('anothermonth', 'next');
             dayOfWeek += 1;
 
             if (dayOfWeek > 7 && i + 1 <= restDays) {
