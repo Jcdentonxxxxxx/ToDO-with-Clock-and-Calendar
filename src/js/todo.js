@@ -10,6 +10,7 @@ const todoHeader = document.querySelector('.todo__header');
 const modal = document.querySelector('.modal');
 const modalClose = modal.querySelector('.modal__close');
 const arrayDaysWeek = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
+const modalAffairs = modal.querySelector('.modal__affairs');
 //Event Listeners
 document.addEventListener('DOMContentLoaded', getTodos);
 document.addEventListener('DOMContentLoaded', getChosenDate);
@@ -20,6 +21,7 @@ calendar.addEventListener('click', getTodos);
 calendar.addEventListener('click', getChosenDate);
 todoHeader.addEventListener('click', showModal);
 modalClose.addEventListener('click', closeModal);
+modalAffairs.addEventListener('click', filterAffairs);
 //Functions
 
 function addTodo(event) {
@@ -315,11 +317,82 @@ function showModal(e) {
     setTimeout(()=> {
         modalContent.style.transform = 'rotateX(0deg)';
     },200)
-    
+    createList();
+}
+
+function createList() {
+    let todos;
+    let lastRow = modal.querySelector('.modal__affairs tr');
+    if (localStorage.getItem('todos') === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+
+    for (let i = 0; i < todos.length; i++) {
+        let todoObj = todos[i];
+        let tr = document.createElement('tr');
+        if (todoObj.completed) {
+            tr.classList.add('completed');
+        }
+        let tdAffair = document.createElement('td');
+        tdAffair.innerText = todoObj.todoText;
+        tr.append(tdAffair);
+
+        let tdDate = document.createElement('td');
+        let day = todoObj.day;        
+        if(day < 10) day = '0' + day;
+
+        let month = todoObj.month;
+        if (month < 10) month = '0' + month;
+
+        tdDate.innerText = `${day}.${month}.${todoObj.year}`;
+        tr.append(tdDate);
+
+        lastRow.after(tr);
+        lastRow = tr;
+
+
+    }
 }
 
 function closeModal(e) {
     modal.classList.remove('show');
     let modalContent = modal.querySelector('.modal__content');
     modalContent.style.transform = 'rotateX(90deg)';
+    let listRow = modal.querySelectorAll('tr');
+
+    for (let i = 0; i < listRow.length; i++) {
+        if (listRow[i].classList.contains('modal__list')) continue;
+        listRow[i].remove();
+    }
+}
+
+
+function filterAffairs(e) {
+    if (!event.target.hasAttribute('data-filter')) return;
+    let trCollect = modal.querySelectorAll('tr:not(:first-child)');
+    trCollect = Array.from(trCollect);
+
+    trCollect.sort(function (a, b) {
+
+        let innerA = a.children[1].innerHTML;
+        innerA = innerA.split('.');
+        let dateA = new Date(`${innerA[2]}-${innerA[1]}-${innerA[0]}`);
+        let msA = dateA.getTime();
+
+        let innerB = b.children[1].innerHTML;
+        innerB = innerB.split('.');
+        let dateB = new Date(`${innerB[2]}-${innerB[1]}-${innerB[0]}`);
+        let msB = dateB.getTime();
+
+        if (msA > msB) return 1;
+        if (msA == msB) return 0;
+        if (msA < msB) return -1;
+    })
+
+
+    for (let i = 0; i < trCollect.length; i++) {
+        modalAffairs.append(trCollect[i]);
+    }
 }

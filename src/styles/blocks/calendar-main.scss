@@ -43,6 +43,35 @@
             transform: rotate(-45deg) translateY(-50%);
         }
     }
+    table {
+        width: 100%;
+        table-layout: fixed;
+        border-spacing: 0px;
+        transition: all 0.3s linear;
+    }
+
+    tr {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+
+    th,
+    td {
+        text-align: center;
+        width: 45px;
+        height: 40px;
+        border: 2px solid transparent;
+        vertical-align: middle;
+        line-height: 40px;
+        margin-right: 4px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
 }
 
 
