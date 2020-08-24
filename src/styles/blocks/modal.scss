@@ -1,5 +1,5 @@
 .modal {
-    display: none;
+    display: none; // исправить
     width: 100%;
     height: 100%;
     padding: 1rem;
@@ -23,7 +23,7 @@
         position: relative;
         background-color: white;
         padding: 1rem;
-        transform: rotateX(90deg);
+        transform: rotateX(90deg);// исправить
         transition: transform 0.2s linear;
     }
 
@@ -51,6 +51,54 @@
 
         &:active {
             outline: none;
+        }
+    }
+
+    &__header {
+        margin-bottom: 15px;
+        padding: 5px;
+    }
+
+    &__affairs {
+        width: 100%;
+        table-layout: fixed;
+        border-spacing: 0px;
+        font-size: 17px;
+        tr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+            border-bottom: 1px solid rgba(6, 15, 49, 0.3);
+            
+        }
+        th {
+            text-align: left;
+        }
+
+        th,td {
+            padding: 5px;
+            word-wrap: break-word;
+        }        
+
+        th:first-child,
+        td:first-child {
+            max-width: 90%;
+            word-wrap: break-word;
+            flex: 1;
+        }
+
+        th:last-child,
+        td:last-child {
+            min-width: 10%;
+        }
+
+        th:last-child {
+            cursor: pointer;
+            &:hover {
+                background-color: rgba(6, 15, 49, 0.3);
+                
+            }
         }
     }
 }
