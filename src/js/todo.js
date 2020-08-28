@@ -27,10 +27,10 @@ modalAffairs.addEventListener('click', filterAffairs);
 function addTodo(event) {
     event.preventDefault();
     const monthAndYearArr = calendarMainDate.getAttribute('data-monthAndYear').split(',');
-    const dayOfMonth = calendar.querySelector('.calendar .active').innerHTML;
-    const date = new Date(`${monthAndYearArr[0]}-${+monthAndYearArr[1] + 1}-${dayOfMonth}`);
+    const dayOfMonth = calendar.querySelector('.calendar .active').innerHTML;    
+    const month = monthAndYearArr[1];
+    const year = monthAndYearArr[0];
     
-
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo__block');
 
@@ -38,9 +38,9 @@ function addTodo(event) {
     newTodo.innerText = todoInput.value;
     newTodo.classList.add('todo__item');
     todoDiv.append(newTodo);
+    
 
-
-    saveLocalTodos(todoInput.value, date);
+    saveLocalTodos(todoInput.value, dayOfMonth, month, year);
 
     const completedButton = document.createElement('button');
     completedButton.innerHTML = '<i class="fas fa-check"></i>';
@@ -141,7 +141,7 @@ function filterTodo(event) {
 }
 
 
-function saveLocalTodos(todo, date) {    
+function saveLocalTodos(todo, day, month, year) {    
     let todos;     
     if (localStorage.getItem('todos') === null) {
         todos = [];
@@ -151,9 +151,9 @@ function saveLocalTodos(todo, date) {
     todos.push({
         todoText: todo,
         completed: false,
-        day: date.getDate(),
-        month: date.getMonth(),
-        year: date.getFullYear()
+        day: day,
+        month: month,
+        year: year
 
     });
     localStorage.setItem('todos', JSON.stringify(todos));
