@@ -63,33 +63,35 @@
         </div>
 
         <div class="todo">
-            <form class="todo__form todo__form--select">
-                <div>
-                    <h1 class="todo__header">
-                        <span></span>
-                        <span></span>
-                    </h1>
-                </div>
-                <div class="todo__select">
-                    <select name="todos" class="todo__filter">
-                        <option value="all">Все</option>
-                        <option value="completed">Выполнено</option>
-                        <option value="uncompleted">Не выполнено</option>
-                    </select>
-                </div>
-            </form>
-            
-            <form class="todo__form todo__form--input">
-                <input type="text" class="todo__input">
-                <button class="todo__button" type="submit">
-                    <i class="fas fa-plus-square"></i>
-                </button>
-            </form>
+            <div class="todo__inner">
+                <form class="todo__form todo__form--select">
+                    <div>
+                        <h1 class="todo__header">
+                            <span></span>
+                            <span></span>
+                        </h1>
+                    </div>
+                    <div class="todo__select">
+                        <select name="todos" class="todo__filter">
+                            <option value="all">Все</option>
+                            <option value="completed">Выполнено</option>
+                            <option value="uncompleted">Не выполнено</option>
+                        </select>
+                    </div>
+                </form>
+                
+                <form class="todo__form todo__form--input">
+                    <input type="text" class="todo__input">
+                    <button class="todo__button" type="submit">
+                        <i class="fas fa-plus-square"></i>
+                    </button>
+                </form>
 
-            <div class="todo__container">
-                <ul class="todo__list">
-            
-                </ul>
+                <div class="todo__container">
+                    <ul class="todo__list">
+                
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

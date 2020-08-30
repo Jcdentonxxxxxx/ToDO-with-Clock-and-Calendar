@@ -1,6 +1,11 @@
 .todo {
     padding: 10px;
-    overflow: hidden;
+    overflow: auto;
+    max-height: 300px;
+
+    &__inner {
+        overflow: hidden;
+    }
 
     &__header {
         font-family: 'RobotoCondensed';
@@ -46,6 +51,7 @@
 
         &--input {
             justify-content: center;
+            margin-bottom: 5px;
         }
     }
 
@@ -94,6 +100,11 @@
         padding: 5px;
         cursor: pointer;
         font-size: 13px;
+        transition: all 0.1s linear;
+        &:hover {
+            background: white;
+            color: black;
+        }
     }
 
     &__fall {

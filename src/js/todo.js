@@ -18,6 +18,7 @@ const modalAffairs = modal.querySelector('.modal__affairs');
 document.addEventListener('DOMContentLoaded', getTodos);
 document.addEventListener('DOMContentLoaded', getChosenDate);
 document.addEventListener('DOMContentLoaded', addMarks);
+document.addEventListener('DOMContentLoaded', fixHeightTodo);
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
@@ -418,9 +419,19 @@ function filterAffairs(e) {
         if (msA < msB) return -1;
     })
 
-
     for (let i = 0; i < trCollect.length; i++) {
         modalAffairs.append(trCollect[i]);
     }
+}
+
+function fixHeightTodo() {
+    let heightWindow = document.documentElement.clientHeight;
+    let bigClock = document.querySelector('.big-clock');
+    let calendarMain = document.querySelector('.calendar-main');
+    let todo = document.querySelector('.todo');
+    let height = heightWindow - bigClock.offsetHeight - calendarMain.offsetHeight;
+
+    console.log(height);
+    todo.style.maxHeight = height + 'px';
 }
 
