@@ -5,6 +5,19 @@
     td {
         cursor: pointer;
 
+        &.haveTodo {
+            &::after {                
+                content: "";
+                border-right: 2px solid #0099ff;
+                border-top: 2px solid #0099ff;
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 5px;
+                height: 5px;                
+            }
+        }
+
         &:hover {
             border-color: rgb(212, 208, 208);
         }
@@ -14,6 +27,16 @@
 
             &:hover {
                 border-color: rgb(3, 128, 211);
+            }
+
+            &.duble-active {
+                border-color: rgb(0, 153, 255);
+                box-shadow: inset 0px 0px 0 2px rgba(0, 0, 0, 0.9);
+                background-color: rgb(3, 128, 211);
+
+                &:hover {
+                    border-color: rgb(90, 167, 240);
+                }
             }
         }
 
@@ -26,16 +49,6 @@
                 border-color: rgb(0, 153, 255);
             }   
         }
+        
     }
-}
-
-.calendar td.active.duble-active {
-    border-color: rgb(0, 153, 255);
-    box-shadow: inset 0px 0px 0 2px rgba(0, 0, 0, 0.9);
-    background-color: rgb(3, 128, 211);
-
-}
-
-.calendar td.active.duble-active:hover {
-    border-color: rgb(90, 167, 240)
 }

@@ -1,4 +1,5 @@
 import fixCurrentDate from './fixCurrentDate';
+import addMarks from './addMarks';
 
 
 let calendar = document.querySelector('.calendar');
@@ -77,6 +78,8 @@ export default function createCalendar(elem , year, month) {
             }
         }
     }
+
+    addMarks();
 }
 
 
@@ -144,3 +147,4 @@ function changeCalendar(e) {
         createCalendar(calendar, currentYear, currentMonth + 1);
     }
 }
+
