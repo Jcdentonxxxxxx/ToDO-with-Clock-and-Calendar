@@ -187,7 +187,17 @@ function saveLocalTodos(todo, day, month, year) {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-function getTodos(e) {
+function getTodos(e) {    
+    
+    if(!e.target.doctype) {
+        if (e.target.hasAttribute('anothermonth')) {
+            console.log('Ky');
+            return
+        };
+        
+    }    
+    
+
     let todoBlocks = document.querySelectorAll('.todo__list .todo__block');
     for (const block of todoBlocks) {
         block.remove();
@@ -431,7 +441,7 @@ function fixHeightTodo() {
     let todo = document.querySelector('.todo');
     let height = heightWindow - bigClock.offsetHeight - calendarMain.offsetHeight;
 
-    console.log(height);
+    
     todo.style.maxHeight = height + 'px';
 }
 
