@@ -1,3 +1,6 @@
+import addMarks from './addMarks';
+
+
 //Selectors
 const todoMain = document.querySelector('.todo');
 const todoInput = document.querySelector('.todo__input');
@@ -14,6 +17,7 @@ const modalAffairs = modal.querySelector('.modal__affairs');
 //Event Listeners
 document.addEventListener('DOMContentLoaded', getTodos);
 document.addEventListener('DOMContentLoaded', getChosenDate);
+document.addEventListener('DOMContentLoaded', addMarks);
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
@@ -27,7 +31,12 @@ modalAffairs.addEventListener('click', filterAffairs);
 function addTodo(event) {
     event.preventDefault();
     const monthAndYearArr = calendarMainDate.getAttribute('data-monthAndYear').split(',');
-    const dayOfMonth = calendar.querySelector('.calendar .active').innerHTML;    
+    const active = calendar.querySelector('.calendar .active');
+    const dayOfMonth = active.innerHTML;
+    if (!active.classList.contains('haveTodo')) {
+        active.classList.add('haveTodo');
+    }
+
     const month = monthAndYearArr[1];
     const year = monthAndYearArr[0];
     
@@ -79,7 +88,25 @@ function deleteCheck(event) {
         });
 
         removeLocalTodos(todo, index, monthAndYearArr, dayOfMonth);
+        /** */
+        let todos;
+        if (localStorage.getItem('todos') === null) {
+            todos = [];
+        } else {
+            todos = JSON.parse(localStorage.getItem('todos'));
+        }
+        todos = todos.filter(todoObj => {
 
+            if (todoObj.day == dayOfMonth && todoObj.month == monthAndYearArr[1] && todoObj.year == monthAndYearArr[0]) {
+
+                return true;
+            }
+        })
+
+        if (!todos.length) {
+            calendar.querySelector('.active').classList.remove('haveTodo');
+        }
+        
     };
 
 
@@ -396,3 +423,4 @@ function filterAffairs(e) {
         modalAffairs.append(trCollect[i]);
     }
 }
+
