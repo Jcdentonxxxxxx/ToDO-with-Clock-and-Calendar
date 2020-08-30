@@ -13,6 +13,9 @@
         font-size: 18px;
         color: #9dd3ff;
         cursor: pointer;
+        &:hover {
+            color: rgb(153, 149, 149);
+        }
     }
 
     &__form {
